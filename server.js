@@ -1,23 +1,33 @@
 //-----Requirements-----//
-var express = require("express");
-var mongoose = require("mongoose");
-var logger = require("morgan");
-var axios = require("axios");
-var cheerio = require("cheerio");
-var db = require("./models")
+const express = require("express");
+const mongoose = require("mongoose");
+const logger = require("morgan");
+const axios = require("axios");
+const cheerio = require("cheerio");
+const db = require("./models");
+const exphbs = require("express-handlebars")
+
 
 //-----Connections and Set-Ups-----//
 var PORT = 3000;
 var app = express();
 
-app.use(logger("dev"));
+// app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+app.set("index", __dirname + "/views");
+
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+var results = [];
 
 //-----Routes-----//
+
 
 //-----Listener-----//
 app.listen(PORT, function() {
