@@ -70,8 +70,25 @@ app.put("/update/:id", function (req, res){
     } else {
       res.status(200).end();
     }
-  } )
-})
+  });
+});
+
+//--Second Update Route--//
+app.put("/unsave/:id", function(req, res){
+  console.log(req.body);
+  db.Article.updateOne({__id: req.params.id}, { $set: { saved: false}}, function(err, result){
+    if (result.changedRows == 0) {
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
+  });
+});
+
+//--Third Update Route (New Note)--//
+
+
+
 
 //-----Listener-----//
 app.listen(PORT, function() {
