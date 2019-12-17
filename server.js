@@ -95,12 +95,20 @@ app.put("/newnote/:id", function(req, res){
     if (result.changedRows == 0) {
       return res.status(404).end();
     } else [
-      res.status(200).end();
+      res.status(200).end()
     ]
   });
 });
 
-
+//--Get Route (Saved)--//
+app.get("/saved", function (req, res){
+  var savedArticles = [];
+  db.Article.find({ saved: true }, function (err,saved){
+    if (err) throw err;
+    savedArticles.push(saved)
+    res.render("saved", {saved})
+  });
+});
 
 
 
