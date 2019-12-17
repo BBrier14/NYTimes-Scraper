@@ -86,6 +86,20 @@ app.put("/unsave/:id", function(req, res){
 });
 
 //--Third Update Route (New Note)--//
+app.put("/newnote/:id", function(req, res){
+  console.log(req.body);
+  console.log(req,body.__id);
+  console.log(req.body.note);
+  db.Article.updateOne({__id: req.body.__id}, { $push: { note: req.body.note }}, function(err, result){
+    console.log(result);
+    if (result.changedRows == 0) {
+      return res.status(404).end();
+    } else [
+      res.status(200).end();
+    ]
+  });
+});
+
 
 
 
