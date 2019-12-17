@@ -9,7 +9,7 @@ const exphbs = require("express-handlebars")
 
 
 //-----Connections and Set-Ups-----//
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 var app = express();
 
 // app.use(logger("dev"));
@@ -52,6 +52,7 @@ app.get("/newsscrape", function (req, res){
     db.Article.create(results)
     .then(function (dbArticle){
       res.render("index", { dbArticle });
+      console.log(dbArticle)
     })
     .catch(function (err){
       console.log(err);
