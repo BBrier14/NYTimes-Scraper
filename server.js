@@ -39,9 +39,31 @@ app.get("/newsscrape", function (req, res){
             var summaryOne = $(element).parent().parent().siblings().children("li:first-child").text();
             var summaryTwo = $(element).parent().parent().siblings().children("li:last-child").text();
 
+            if (headline && summaryOne && link) {
+              results.push({
+                headline: headline,
+                summaryOne: summaryOne,
+                summaryTwo: summaryTwo,
+                link: link
+              })
+            }
+
+    });
+    db.Article.create(results)
+    .then(function (dbArticle){
+      res.render("index", { dbArticle });
+    })
+    .catch(function (err){
+      console.log(err);
+    })
+    app.get("/", function (req, res){
+      res.render("index")
     })
   })
-})
+});
+
+//--First Update Route--//
+
 
 //-----Listener-----//
 app.listen(PORT, function() {
