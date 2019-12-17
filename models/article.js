@@ -28,3 +28,8 @@ const ArticleSchema = new Schema ({
     note:
     []
 });
+
+//-----Export Schema-----//
+const Article = mongoose.model("Article", ArticleSchema);
+
+module.exports = Article;
