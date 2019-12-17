@@ -28,6 +28,20 @@ var results = [];
 
 //-----Routes-----//
 
+//--Main Scrape Route--//
+app.get("/newsscrape", function (req, res){
+  axios.get("https://www.nytimes.com/").then (function (response){
+    var $ = cheerio.load(response.data)
+    $("h2 span").each (function (i, element){
+      var headline = $(element).text();
+      var link = "https://www.nytimes.com";
+            link = link + $(element).parents("a").attr("href");
+            var summaryOne = $(element).parent().parent().siblings().children("li:first-child").text();
+            var summaryTwo = $(element).parent().parent().siblings().children("li:last-child").text();
+
+    })
+  })
+})
 
 //-----Listener-----//
 app.listen(PORT, function() {
