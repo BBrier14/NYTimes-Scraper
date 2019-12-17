@@ -1,12 +1,12 @@
 //-----Requirements-----//
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 //-----Schema Creation-----//
 const Schema = mongoose.Schema;
 
-const NoteSchema = new Schema ({
-    title: String,
-    body: String
+const NoteSchema = new Schema({
+  title: String,
+  body: String
 });
 
 //-----Export Schema-----//

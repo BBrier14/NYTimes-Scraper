@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12" >
+        <div class="col-md-12">
             <a href="/" class="upper-link">HOME</a>
             <button class="btn btn-primary btn-sm" id="scrapeBtn">SCRAPE</button>
             <a href="https://www.nytimes.com" class="upper-link">NYTIMES.COM</a>
@@ -28,9 +28,9 @@
                     <button class="btn btn-danger btn-sm" type="submit">DELETE</button>
                     <hr />
                 </form>
-                <form action="/newnote" method="PUT"  id="new-note">
-                        <input type="hidden" value={{_id}}>
-                        <input type="name" class="form-control" id="message" >
+                <form action="/newnote" method="PUT" id="new-note">
+                    <input type="hidden" value={{_id}}>
+                    <input type="name" class="form-control" id="message">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
@@ -63,7 +63,7 @@
                 data: data
             })
             location.reload();
-        $("#message").val("");
+            $("#message").val("");
         });
         $("#delete-article").on("click", function (event) {
             event.preventDefault();
@@ -79,6 +79,6 @@
             })
             location.reload();
         });
-        
+
     });
 </script>
