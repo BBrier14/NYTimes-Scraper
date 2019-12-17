@@ -63,7 +63,15 @@ app.get("/newsscrape", function (req, res){
 });
 
 //--First Update Route--//
-
+app.put("/update/:id", function (req, res){
+  db.Article.updateOne({__id: req.params.id}, { $set: {saved: true}}, function (err, result){
+    if (result.changedRows == 0){
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
+  } )
+})
 
 //-----Listener-----//
 app.listen(PORT, function() {
