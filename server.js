@@ -1,7 +1,6 @@
 //-----Requirements-----//
 const express = require("express");
 const mongoose = require("mongoose");
-const logger = require("morgan");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const db = require("./models");
@@ -29,6 +28,13 @@ var results = [];
 //-----Routes-----//
 
 //--Main Scrape Route--//
+app.get("/", function (req, res){
+  db.Article.find({ saved: false }, function (err, result){
+    if (err) throw err;
+    res.render("index", { result })
+  })
+});
+
 app.get("/newsscrape", function(req, res) {
   axios.get("https://www.nytimes.com/").then(function(response) {
     var $ = cheerio.load(response.data);

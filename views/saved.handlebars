@@ -43,20 +43,26 @@
         </div>
     </div>
 </div>
+
+{{!-- -----Javascript Required For On-Click Events----- --}}
 <script>
     $(document).ready(function () {
+
         $("#new-note").on("submit", function (event) {
             event.preventDefault();
             console.log("new note");
+
             var id = $(this).children().val();
             var newNote = $("#message").val();
             console.log(id);
             console.log(newNote);
+
             var data = {
                 _id: id,
                 note: newNote
             }
             console.log(data);
+
             $.ajax({
                 type: "PUT",
                 url: "/newnote/",
@@ -65,6 +71,8 @@
             location.reload();
             $("#message").val("");
         });
+
+
         $("#delete-article").on("click", function (event) {
             event.preventDefault();
             console.log("delete it!");
