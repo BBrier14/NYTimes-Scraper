@@ -1,3 +1,6 @@
+{{!-- ---HTML for Main Page/Unsaved Articles--- --}}
+
+{{!-- Nav Bar --}}
 <div class="container">
     <div class="row">
         <div class="col-md-12" id="titleDiv">
@@ -16,6 +19,7 @@
         </div>
     </div>
 
+    {{!-- Unsaved Articles Go Here --}}
     <hr class="white-underline">
     <div class="row">
         {{#each result}}
@@ -50,8 +54,9 @@
 
 
 
-
+{{!-- -----Javascript Required For On-Click Events----- --}}
 <script>
+
     $(document).ready(function () {
         $("#scrapeBtn").on("click", function (event) {
             event.preventDefault();
@@ -59,11 +64,14 @@
                 location.reload();
             });
         });
+
         $("#save-article").on("click", function (event) {
             event.preventDefault();
             console.log("save it!");
+
             var id = $(this).children().val();
             console.log(id);
+
             var data = {
                 _id: id
             }
