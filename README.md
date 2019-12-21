@@ -6,6 +6,8 @@ The user will start on the homepage. When they click the Scrape Button, the app 
 ## Technologies Used
 HTML5, CSS3, Javascript, Jquery, MongoDB, Axios, Cheerio, Express, Express-Handlebars, & Mongoose.
 ## Issues
-Currently, the only issue is that the scraped articles are not presenting on the page. They do show up in the database on the Robo3t app, but do not show up on the page. I suspect its Handlebars related. Will updated if improvements are made.
+Heroku does not show scrape, but it functions locally.
 ## Role 
 This is a solo project. As the only developer, I analyzed and interpreted the needs, wants, and requirements of the Product Owner (Trilogy) and created a functioning application from top to bottom that met those expectations.
+## Heroku Link
+https://dashboard.heroku.com/apps/boiling-badlands-84086
