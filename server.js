@@ -38,40 +38,49 @@ app.get("/", function (req, res){
 app.get("/newsscrape", function(req, res) {
   axios.get("https://www.nytimes.com/").then(function(response) {
     var $ = cheerio.load(response.data);
-    $("h2 span").each(function(i, element) {
-      var headline = $(element).text();
-      var link = "https://www.nytimes.com";
-      link =
-        link +
-        $(element)
-          .parents("a")
-          .attr("href");
-      var summaryOne = $(element)
-        .parent()
-        .parent()
-        .siblings()
-        .children("li:first-child")
-        .text();
-      var summaryTwo = $(element)
-        .parent()
-        .parent()
-        .siblings()
-        .children("li:last-child")
-        .text();
+    var url = $(this)
+    .find("a")
+    .attr("href");
+    $(".assetWrapper").each(function(i, element) {
 
-      if (headline && summaryOne && link) {
+      var headline = $(element).find("h2").text();
+      var link = $(element).find("a").attr("href")
+      console.log(headline, link)
+      
+      // var headline = $(element).text();
+      // var link = "https://www.nytimes.com";
+      // link =
+      //   link +
+      //   $(element)
+      //     .parents("a")
+      //     .attr("href");
+      // var summaryOne = $(element)
+      //   .parent()
+      //   .parent()
+      //   .siblings()
+      //   .children("li:first-child")
+      //   .text();
+      // var summaryTwo = $(element)
+      //   .parent()
+      //   .parent()
+      //   .siblings()
+      //   .children("li:last-child")
+      //   .text();
+
+      if (headline && link) {
         results.push({
           headline: headline,
-          summaryOne: summaryOne,
-          summaryTwo: summaryTwo,
+          // summaryOne: summaryOne,
+          // summaryTwo: summaryTwo,
           link: link
         });
       }
+
     });
     db.Article.create(results)
       .then(function(dbArticle) {
         res.render("index", { dbArticle });
-        console.log(dbArticle);
+      
       })
       .catch(function(err) {
         console.log(err);

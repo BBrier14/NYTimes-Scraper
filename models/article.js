@@ -11,7 +11,7 @@ const ArticleSchema = new Schema({
   },
   summaryOne: {
     type: String,
-    required: true
+    required: false
   },
   summaryTwo: {
     type: String,
