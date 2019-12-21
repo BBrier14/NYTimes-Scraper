@@ -10,4 +10,4 @@ Heroku does not show scrape, but it functions locally.
 ## Role 
 This is a solo project. As the only developer, I analyzed and interpreted the needs, wants, and requirements of the Product Owner (Trilogy) and created a functioning application from top to bottom that met those expectations.
 ## Heroku Link
-https://dashboard.heroku.com/apps/boiling-badlands-84086
+https://boiling-badlands-84086.herokuapp.com/
